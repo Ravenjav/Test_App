@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="utf-8"/>
+
+    <title>Application</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+    <div th:replace="~{navigation :: navigation(Main)}" />
+    <div class="row">
+        <form th:action="@{/find}" method="post">
+            <input type="text" name="search"  placeholder=search th:value="${search}">
+            <button type="submit">submit</button>
+        </form>
+        <form th:action="@{/clear}" method="post">
+            <button type="submit">clear</button>
+        </form>
+    </div>
+    <h1>Sensors</h1>
+    <span th:if="${sensors.size() == 0}">Sensors list is empty</span>
+    <table th:if="${sensors.size() > 0}" class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <td>Title</td>
+            <td>Model</td>
+            <td>From</td>
+            <td>To</td>
+            <td>Type</td>
+            <td>Unit</td>
+            <td>Location</td>
+            <td></td>
+            <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="sensor : ${sensors}">
+            <td th:text="${sensor.title}"/>
+            <td th:text="${sensor.model}"/>
+            <td th:text="${sensor.from}"/>
+            <td th:text="${sensor.to}"/>
+            <td th:text="${sensor.type}"/>
+            <td th:text="${sensor.unit}"/>
+            <td th:text="${sensor.location}"/>
+            <td sec:authorize="hasRole('ADMIN')">
+                <a class="btn btn-warning" th:href="@{'/sensor/form/' + ${sensor.id}}">Change</a>
+            </td>
+            <td sec:authorize="hasRole('ADMIN')">
+                <a class="btn btn-danger" th:href="@{'/sensor/delete/' + ${sensor.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+
+</html>
