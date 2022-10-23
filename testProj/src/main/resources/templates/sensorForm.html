@@ -26,19 +26,19 @@
                         <input th:field="*{title}" type="text" name="title" required placeholder="title" maxlength="30" class="form-control">
                     </div>
                     <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-tasks"></i></span>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
                         <input th:field="*{model}" type="text" name="model" required placeholder="model" maxlength="15" class="form-control">
                     </div>
                     <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-wrench"></i></span>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
                         <input th:field="*{from}" type="number" name="from" required placeholder="from" class="form-control">
                     </div>
                     <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
                         <input th:field="*{to}" type="number" name="to" required placeholder="to" class="form-control">
                     </div>
                     <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
                         <select th:field="*{type}" name="type" required placeholder="type" class="form-control">
                             <option value="Pressure">Pressure</option>
                             <option value="Voltage">Voltage</option>
@@ -47,7 +47,7 @@
                         </select>
                     </div>
                     <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-eur"></i></span>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
                         <select th:field="*{unit}" name="unit" placeholder="unit" class="form-control">
                             <option value="">None</option>
                             <option value="Bar">Bar</option>
@@ -57,17 +57,17 @@
                         </select>
                     </div>
                     <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-eur"></i></span>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
                         <input th:field="*{location}" type="text" name="location" placeholder="location" maxlength="40" class="form-control">
                     </div>
                     <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-eur"></i></span>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-th-list"></i></span>
                         <input th:field="*{description}" type="text" name="description" placeholder="description" maxlength="200" class="form-control">
                     </div>
                     <div style="margin-top: 30px" class="form-group\">
                         <div class="col-sm-8 controls">
                             <button type="submit" class="btn btn-success"
-                                    th:text="${sensor == null ? 'Add' : 'Change'}">
+                                    th:text="${sensor.id == null ? 'Add' : 'Change'}">
                             </button>
                         </div>
                     </div>

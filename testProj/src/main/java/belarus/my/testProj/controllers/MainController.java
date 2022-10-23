@@ -77,7 +77,7 @@ public class MainController {
     @PostMapping("/sensor/add")
     @Secured({"ADMIN", "MANAGER"})
     public String addSensor(@ModelAttribute Sensor sensor){
-        if (sensorService.getSensorById(sensor.getId()) != null) {
+        if (sensor.getId() != null) {
             sensorService.changeSensor(sensor);
             return "redirect:/";
         }
